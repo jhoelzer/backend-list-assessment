@@ -23,8 +23,11 @@
 # and last chars of the string are the same.
 # Note: python does not have a ++ operator, but += works.
 def match_ends(words):
-    """Your code goes here.  Edit this docstring."""
-    return
+     count = 0
+     for word in words:
+          if len(word) >= 2 and word[0] == word[-1]:
+               count += 1
+     return count
 
 
 # B. front_x
@@ -35,8 +38,14 @@ def match_ends(words):
 # Hint: this can be done by making 2 lists and sorting each of them
 # before combining them.
 def front_x(words):
-    """Your code goes here.  Edit this docstring."""
-    return
+     x_list = []
+     reg_list = []
+     for word in words:
+          if word[0] == 'x':
+               x_list.append(word)
+          else:
+               reg_list.append(word)
+     return sorted(x_list) + sorted(reg_list)
 
 
 # C. sort_last
@@ -45,19 +54,21 @@ def front_x(words):
 # e.g. [(1, 7), (1, 3), (3, 4, 5), (2, 2)] yields
 # [(2, 2), (1, 3), (3, 4, 5), (1, 7)]
 # Hint: use a custom key= function to extract the last element form each tuple.
+def last(x):
+  return x[-1]
+
 def sort_last(tuples):
-    """Your code goes here.  Edit this docstring."""
-    return
+     return sorted(tuples, key = last)
 
 
 # Simple provided test() function used in main() to print
 # what each function returns vs. what it's supposed to return.
 def test(got, expected):
-    if got == expected:
-        prefix = ' OK '
-    else:
-        prefix = '  X '
-    print('{} got: {} expected: {}'.format(prefix, repr(got), repr(expected)))
+     if got == expected:
+          prefix = ' OK '
+     else:
+          prefix = '  X '
+     print '%s got: %s expected: %s' % (prefix, repr(got), repr(expected))
 
 
 # Calls the above functions with interesting inputs.
